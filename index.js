@@ -12,11 +12,13 @@ const PORT = process.env.PORT || 3000
 
 app.post('/test', (req, res) => {
     console.log("Something arrived")
-    console.log(req.hostname)
-    console.log(req.originalUrl)
-    console.log(req.headers)
-    console.log(req.body)
-    console.log(req.cookies)
+    console.log("req.hostname: ",req.hostname)
+    console.log("req.originalUrl: ", req.originalUrl)
+    console.log("req.headers: ", req.headers)
+    console.log("req.body: ", req.body)
+    console.log("req.cookies: ",req.cookies)
+    console.log("req.rawHeaders: ", req.rawHeaders)
+    console.log(req.baseUrl)
     res.status(200).json({
         status: 200,
         message: `Hey`,
