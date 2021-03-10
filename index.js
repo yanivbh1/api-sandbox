@@ -11,7 +11,7 @@ app.use(cookieParser());
 const PORT = process.env.PORT || 3001
 
 app.get('/', (req, res) => {
-    res.status(404).json({
+    res.status(200).json({
         status: 200,
         message: `Hey`,
         data: null
