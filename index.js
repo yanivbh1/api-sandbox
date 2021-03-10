@@ -3,10 +3,12 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 const app = express();
-app.use(cors({ credentials: true, origin: allowedOrigins }));
+app.use(cors({ credentials: true, origin: "*" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: '5mb' }));
 app.use(cookieParser());
+
+const PORT = process.env.PORT || 3001
 
 app.get('/', (req, res) => {
     res.status(404).json({

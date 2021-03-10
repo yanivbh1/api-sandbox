@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/YanivBenHemo-NSCI/api-sandbox/issues"
   },
-  "homepage": "https://github.com/YanivBenHemo-NSCI/api-sandbox#readme"
+  "homepage": "https://github.com/YanivBenHemo-NSCI/api-sandbox#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
 }
