@@ -15,6 +15,7 @@ app.post('/test', (req, res) => {
     console.log(req.originalUrl)
     console.log(req.headers)
     console.log(req.body)
+    console.log(req.cookies)
     res.status(200).json({
         status: 200,
         message: `Hey`,
