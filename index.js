@@ -11,7 +11,7 @@ app.use(cookieParser());
 const PORT = process.env.PORT || 3000
 
 app.all('*', (req, res) => {
-    console.log("TEST")
+    console.log(req)
     res.status(200).json({
         status: 200,
         message: `Hey`,
