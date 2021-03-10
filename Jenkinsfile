@@ -2,6 +2,7 @@ def dockerHubRepo = "nsci-image-repo"
 def imageName = "custom-api-sandbox"
 def gitURL = "https://github.com/YanivBenHemo-NSCI/api-sandbox.git"
 def gitBranch = "main"
+def k8sNamespace = "sandbox"
 unique_Id = UUID.randomUUID().toString()
 
 node {
@@ -21,7 +22,7 @@ node {
     
     stage('Push image to kubernetes') {
 	sh "kubectl --kubeconfig=\"/var/lib/jenkins/.kube/nsci-k8s-staging-kubeconfig.yaml\" apply -f \"k8s-template.yaml\" --record"
-	sh "kubectl --kubeconfig=\"/var/lib/jenkins/.kube/nsci-k8s-staging-kubeconfig.yaml\" set image deployment/${imageName}-deployment ${imageName}=registry.digitalocean.com/${dockerHubRepo}/${imageName}:${unique_Id} -n nsci-engine"
+	sh "kubectl --kubeconfig=\"/var/lib/jenkins/.kube/nsci-k8s-staging-kubeconfig.yaml\" set image deployment/${imageName}-deployment ${imageName}=registry.digitalocean.com/${dockerHubRepo}/${imageName}:${unique_Id} -n ${k8sNamespace}"
     }
     notifySuccessful()
 
