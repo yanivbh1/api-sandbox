@@ -1,0 +1,38 @@
+apiVersion: /v1
+kind: Service
+metadata:
+  name: custom-api-sandbox-service
+  namespace: sandbox
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 3000
+  selector:
+    app: custom-api-sandbox-pod
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: custom-api-sandbox-deployment
+  namespace: sandbox
+  labels:
+    app: custom-api-sandbox-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: custom-api-sandbox-pod
+  template:
+    metadata:
+      name: custom-api-sandbox-pod
+      labels:
+        app: custom-api-sandbox-pod
+    spec:
+      containers:
+        - name: custom-api-sandbox
+          image: registry.digitalocean.com/nsci-image-repo/custom-api-sandbox:latest
+          ports:
+            - containerPort: 3000
+      imagePullSecrets:
+        - name: nsci-image-repo
